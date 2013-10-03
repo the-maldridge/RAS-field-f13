@@ -45,7 +45,7 @@ class db():
     if teamName not in self.db:
       logging.error("Team %s does not exist, so can't delete", teamName)
     else:
-      self.db[teamName] = None
+      del self.db[teamName]
       logging.info("Nullified %s", teamName)
 
   def listTeams(self):
@@ -56,7 +56,8 @@ class db():
 
 def getRanks(self):
   logging.info("Ranked Teams")
-  return self.db[][]
+  teams = list(self.db.items(), self.db[self.db.items()][rank])
+  return teams.sort(1)
 
 #-------------Penalties----------------------------------
 
@@ -65,5 +66,5 @@ def getRanks(self):
      logging.info("Assigned penalty %s to %s @ %d", penaltyType, teamName, timeAssigned)
 
   def removePenalty(self, teamName, matchNum, penaltyType, timeAssigned):
-     self.db[teamName]["matches"][matchNum]["penalties"] = None
+     del self.db[teamName]["matches"][matchNum]["penalties"][penaltyType][timeAssigned]
      logging.info("Removed penalty %s from %s @ %d", penaltyType, teamName, timeAssigned)
