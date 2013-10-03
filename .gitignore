@@ -1,4 +1,4 @@
-*.py[cod]
+*.py[cod~]
 
 # C extensions
 *.so
@@ -36,3 +36,6 @@ nosetests.xml
 
 #wxGlade quicksave files
 *.wxg~
+
+#json temp files
+*.json~
