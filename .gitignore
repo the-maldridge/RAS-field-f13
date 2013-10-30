@@ -39,3 +39,8 @@ nosetests.xml
 
 #json temp files
 *.json~
+
+
+*.js~
+*.html~
+*.css~
