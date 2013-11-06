@@ -1,27 +1,27 @@
 #!/usr/bin/env python
 
+import curses
 import logging
 import timing
 import matchdb
-import GUI
-import wx
 
-class MainWindow(GUI.MainWindow):
-    def matchAssignPenalty(self,e):
-        print "made it this far"
+class GUIMain():
+    def __init__ ( self ):
+        self.stdscr = curses.initscr()
+        curses.noecho()
+        curses.cbreak()
+        self.stdscr.keypad ( 1 )
 
-class GUIMain(wx.App):
-    def OnInit(self):
-        wx.InitAllImageHandlers()
-        mainFrame = MainWindow(None, -1, "")
-        self.SetTopWindow(mainFrame)
-        mainFrame.Show()
-        self.mainFrame = mainFrame
-        return 1
+    def __del__ ( self ):
+        self.stdscr.keypad ( 0 )
+        curses.nocbreak()
+        curses.echo()
+        curses.endwin()
 
 class RASScoreboard(GUIMain):
     pass
 
 if __name__ == "__main__":
-    theapp = RASScoreboard()
-    theapp.MainLoop()
+    theapp = GUIMain()
+    theapp.stdscr.getch()
+    del theapp
