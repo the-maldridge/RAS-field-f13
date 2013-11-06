@@ -1,0 +1,13 @@
+{
+  "teamName":{
+    "number":"",
+    "rank":"",
+    "matches":{
+      "1":{
+        "penalties":{
+          "type":"assignedTime"
+        }
+      }
+    }
+  }
+}
