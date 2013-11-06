@@ -1,3 +1,12 @@
-design preliminary gui
+build ncurses
+  screen 1
+    buttons for start/stop/rest/enable
+    clock text
+  screen 2
+    current rankings
+  screen 3
+    list of teams
+    button to add team
+    button to remove team
 bind base functions to wx buttons
 build JSON data store
