@@ -2,7 +2,7 @@ import time
 import curses
 import pyfiglet
 
-class TimeWin:
+class TimeBox:
     def __init__ ( self, parent, y, x ):
         self.__dict__['win'] = parent.derwin ( 10, 78, y, x )
         self.update()
@@ -19,14 +19,14 @@ class TimeWin:
         return getattr ( self.win, attr )
 
 def main ( screen ):
-    tWin = TimeWin ( screen, 0, 0 )
+    tBox = TimeBox ( screen, 0, 0 )
     screen.vline ( 0, 80, '|', 80 )
     screen.timeout ( 10 )
     while ( True ):
         myin = screen.getch()
         if myin == curses.ERR:
-            tWin.update()
-            tWin.refresh()
+            tBox.update()
+            tBox.refresh()
         else:
             break
 
