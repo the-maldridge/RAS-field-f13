@@ -7,5 +7,3 @@ class Button:
 
     def __getattr__ ( self, attr ):
         return getattr ( self.win, attr )
-    def __setattr__ ( self, attr ):
-        return setattr ( self.win, attr )
