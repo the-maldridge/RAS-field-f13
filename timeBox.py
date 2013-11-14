@@ -30,4 +30,5 @@ def main ( screen ):
         else:
             break
 
-curses.wrapper ( main )
+if __name__ == "__main__":
+    curses.wrapper ( main )
