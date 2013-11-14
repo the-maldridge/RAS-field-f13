@@ -6,24 +6,26 @@ class ToggleButton:
         self.text1 = text1
         self.text2 = text2
 
-        self.text = text1
+        self.state = False
 
         self.draw()
     
     def toggle ( self ):
         curses.curs_set ( 0 )
-        if self.text == self.text1:
-            self.text = self.text2
+        if self.state:
+            self.state = False
         else:
-            self.text = self.text1
+            self.state = True
         self.draw()
 
     def draw ( self ):
         self.win.standend()
         self.win.box()
-        if ( self.text == self.text2 ):
+        if self.state:
             self.win.standout()
-        self.win.addstr ( 1, 1, self.text )
+            self.win.addstr ( 1, 1, self.text2 )
+        else:
+            self.win.addstr ( 1, 1, self.text1 )
         self.win.refresh()
 
     def __getattr__ ( self, attr ):
