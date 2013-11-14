@@ -7,3 +7,18 @@ class Button:
 
     def __getattr__ ( self, attr ):
         return getattr ( self.win, attr )
+
+def main ( screen ):
+    tButton = Button ( screen, 0, 0, "Button" )
+    screen.vline ( 0, 80, '|', 80 )
+    screen.timeout ( 10 )
+    while ( True ):
+        myin = screen.getch()
+        if myin == curses.ERR:
+            pass
+        else:
+            break
+
+if __name__ == "__main__":
+    curses.wrapper ( main )
+
