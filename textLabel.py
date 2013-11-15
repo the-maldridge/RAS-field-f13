@@ -1,8 +1,8 @@
 import curses
 
 class TextLabel:
-    def __init__ ( self, parent, y, x, length, text ):
-        self.__dict__['win'] = parent.derwin ( 1, length + 1, y, x )
+    def __init__ ( self, parent, y, x, text ):
+        self.__dict__['win'] = parent.derwin ( 1, len ( text ) + 1, y, x )
         self.text = text
 
         self.draw()
