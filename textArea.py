@@ -17,8 +17,6 @@ class TextArea:
 
         for i, line in enumerate ( self.text.splitlines()[ self.curline:self.curline + height - 1 ] ):
             self.win.addstr ( i, 0, line )
-        self.win.addstr ( 5, 5, str ( self.curline ) )
-        self.win.addstr ( 6, 5, str ( len ( self.text.splitlines() ) ) )
         self.win.refresh()
     
     def scroll ( self, dist ):
