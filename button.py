@@ -14,7 +14,7 @@ class Button:
 
 def main ( screen ):
     tButton = Button ( screen, 0, 0, "Button" )
-    screen.vline ( 0, 80, '|', 80 )
+    screen.vline ( 0, 78, '|', 80 )
     screen.timeout ( 10 )
     while ( True ):
         myin = screen.getch()

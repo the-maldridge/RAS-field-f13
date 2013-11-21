@@ -20,7 +20,7 @@ class TimeBox:
 
 def main ( screen ):
     tBox = TimeBox ( screen, 0, 0 )
-    screen.vline ( 0, 80, '|', 80 )
+    screen.vline ( 0, 78, '|', 80 )
     screen.timeout ( 10 )
     while ( True ):
         myin = screen.getch()

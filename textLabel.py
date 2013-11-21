@@ -16,7 +16,7 @@ class TextLabel:
 
 def main ( screen ):
     tLabel = TextLabel ( screen, 5, 10, 5, "Label" )
-    screen.vline ( 0, 80, '|', 80 )
+    screen.vline ( 0, 78, '|', 80 )
     while ( True ):
         myin = screen.getch()
         break
