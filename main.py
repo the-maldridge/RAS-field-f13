@@ -7,21 +7,18 @@ import matchdb
 
 class GUIMain():
     def __init__ ( self ):
-        self.stdscr = curses.initscr()
-        curses.noecho()
-        curses.cbreak()
-        self.stdscr.keypad ( 1 )
+        curses.wrapper ( self.main )
 
-    def __del__ ( self ):
-        self.stdscr.keypad ( 0 )
-        curses.nocbreak()
-        curses.echo()
-        curses.endwin()
+    def main ( self, screen ):
+        self.screen = screen
+        self.screen.getch()
+
+    def __getattr__ ( self, attr ):
+        getattr ( self.screen, attr )
+
 
 class RASScoreboard(GUIMain):
     pass
 
 if __name__ == "__main__":
     theapp = GUIMain()
-    theapp.stdscr.getch()
-    del theapp
