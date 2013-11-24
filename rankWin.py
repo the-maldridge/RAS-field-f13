@@ -1,13 +1,16 @@
 import curses
+import fullWin
 import textArea
 
-class rankWindow:
+class rankWindow ( fullWin.FullWindow ):
     def __init__ ( self, text = "" ):
-        self.__dict__['win'] = curses.newwin ( 0, 0 )
+        fullWin.FullWindow.__init__ ( self )
         self.rankArea = textArea.TextArea ( self, 0, 0, 24, 80, text )
 
     def update ( self ):
         self.rankArea.update()
+
+        fullWin.FullWindow.update ( self )
 
     def __getattr__ ( self, attr ):
         return getattr ( self.win, attr )
