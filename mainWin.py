@@ -16,19 +16,12 @@ class MainWindow ( fullWin.FullWindow ):
         self.tBox = timeBox.TimeBox ( self, 8, 1 )
 
     def update ( self ):
-        self.tLabel.draw()
-        self.startButton.draw()
-        self.stopButton.draw()
-        self.resetButton.draw()
-        self.tButton.draw()
+        self.tLabel.update()
+        self.tButton.update()
+        self.startButton.update()
+        self.stopButton.update()
+        self.resetButton.update()
         self.tBox.update()
-
-        self.tLabel.refresh()
-        self.tButton.refresh()
-        self.startButton.refresh()
-        self.stopButton.refresh()
-        self.resetButton.refresh()
-        self.tBox.refresh()
 
         fullWin.FullWindow.update ( self )
 
