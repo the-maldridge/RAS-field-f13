@@ -3,7 +3,7 @@ import subWin
 
 class TextLabel ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x, text ):
-        subWin.SubWindow.__init__ ( self, parent, y, x, 1, len ( text ) + 1 )
+        subWin.SubWindow.__init__( self, parent, y, x, 1, len ( text ) + 1 )
         self.text = text
     
     def update ( self ):
