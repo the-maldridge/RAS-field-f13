@@ -5,7 +5,7 @@ import toggleButton
 import textLabel
 import timeBox
 
-class mainWindow ( fullWin.FullWindow ):
+class MainWindow ( fullWin.FullWindow ):
     def __init__ ( self ):
         fullWin.FullWindow.__init__( self )
         self.tLabel = textLabel.TextLabel ( self, 0, 0, "Label" )
@@ -33,7 +33,7 @@ class mainWindow ( fullWin.FullWindow ):
         fullWin.FullWindow.update ( self )
 
 def main ( screen ):
-    m = mainWindow()
+    m = MainWindow()
     screen.timeout ( 10 )
     screen.hline ( 22, 0, '-', 80 )
     while ( True ):
