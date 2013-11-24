@@ -12,6 +12,14 @@ class GUIMain():
     def main ( self, screen ):
         self.screen = screen
         self.screen.getch()
+        self.focus = self
+
+    def getInput ( self ):
+        inputKey = self.win.getkey()
+        self.focus.parseInput ( inputKey )
+
+    def parseInput ( self ):
+        pass
 
     def __getattr__ ( self, attr ):
         getattr ( self.screen, attr )
