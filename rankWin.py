@@ -4,7 +4,7 @@ import textArea
 
 class rankWindow ( fullWin.FullWindow ):
     def __init__ ( self, text = "" ):
-        fullWin.FullWindow.__init__ ( self )
+        fullWin.FullWindow.__init__( self )
         self.rankArea = textArea.TextArea ( self, 0, 0, 24, 80, text )
 
     def update ( self ):

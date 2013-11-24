@@ -1,5 +1,5 @@
-import fullWin
 import curses
+import fullWin
 import button
 import toggleButton
 import textLabel
