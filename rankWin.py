@@ -7,11 +7,6 @@ class rankWindow ( fullWin.FullWindow ):
         fullWin.FullWindow.__init__( self )
         self.rankArea = textArea.TextArea ( self, 0, 0, 24, 80, text )
 
-    def update ( self ):
-        self.rankArea.update()
-
-        fullWin.FullWindow.update ( self )
-
 def main ( screen ):
     r = rankWindow( "Team A\n" +
                     "Team B\n" +

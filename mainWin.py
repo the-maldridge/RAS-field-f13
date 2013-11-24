@@ -15,16 +15,6 @@ class MainWindow ( fullWin.FullWindow ):
         self.resetButton = button.Button ( self, 3, 19, "Reset" )
         self.tBox = timeBox.TimeBox ( self, 8, 1 )
 
-    def update ( self ):
-        self.tLabel.update()
-        self.tButton.update()
-        self.startButton.update()
-        self.stopButton.update()
-        self.resetButton.update()
-        self.tBox.update()
-
-        fullWin.FullWindow.update ( self )
-
 def main ( screen ):
     m = MainWindow()
     screen.timeout ( 10 )
