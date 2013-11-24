@@ -1,12 +1,13 @@
+import fullWin
 import curses
 import button
 import toggleButton
 import textLabel
 import timeBox
 
-class mainWindow:
+class mainWindow ( fullWin.FullWindow ):
     def __init__ ( self ):
-        self.__dict__['win'] = curses.newwin ( 0, 0 )
+        fullWin.FullWindow.__init__( self )
         self.tLabel = textLabel.TextLabel ( self, 0, 0, "Label" )
         self.tButton = toggleButton.ToggleButton ( self, 0, 10, 3, "Foo", "Bar" )
         self.startButton = button.Button ( self, 3, 1, "Start" )
@@ -29,8 +30,7 @@ class mainWindow:
         self.resetButton.refresh()
         self.tBox.refresh()
 
-    def __getattr__ ( self, attr ):
-        return getattr ( self.win, attr )
+        fullWin.FullWindow.update ( self )
 
 def main ( screen ):
     m = mainWindow()
