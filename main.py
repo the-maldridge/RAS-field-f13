@@ -17,6 +17,9 @@ class GUIMain():
     def getInput ( self ):
         inputKey = self.win.getkey()
         self.focus.parseInput ( inputKey )
+    
+    def update ( self ):
+        self.focus.update()
 
     def parseInput ( self ):
         pass
