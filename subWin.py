@@ -8,9 +8,16 @@ class SubWindow:
             self.__dict__['win'] = parent.derwin ( y, x )
         self.parent = parent
         self.focus = self
+        self.isfocused = False
 
     def parseInput ( self ):
         pass
+
+    def setFocus ( self, focus ):
+        if self.focus is not self:
+            self.focus.isfocused = False
+        self.focus = focus
+        self.focus.isfocused = True
 
     def update ( self ):
         self.win.syncup()
