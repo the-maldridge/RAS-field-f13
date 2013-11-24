@@ -11,9 +11,6 @@ class TextLabel ( subWin.SubWindow ):
         
         subWin.SubWindow.update ( self )
 
-    def __getattr__ ( self, attr ):
-        return getattr ( self.win, attr )
-
 def main ( screen ):
     tLabel = TextLabel ( screen, 5, 10, "Label" )
     screen.vline ( 0, 78, '|', 80 )

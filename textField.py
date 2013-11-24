@@ -1,20 +1,19 @@
 import curses
+import subWin
 
-class TextField:
+class TextField ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x, length, text = None ):
-        self.__dict__['win'] = parent.derwin ( 1, length + 1, y, x )
+        subWin.SubWindow.__init__( self, parent, y, x, 1, length + 1 )
         if ( text is None ):
             self.text = " " * length
         else:
             self.text = text
-        self.update()
 
     def update ( self ):
         self.win.clear()
         self.win.addstr ( 0, 0, self.text, curses.A_UNDERLINE )
 
-    def __getattr__ ( self, attr ):
-        return getattr ( self.win, attr )
+        subWin.SubWindow.update ( self )
 
 def main ( screen ):
     tField = TextField ( screen, 5, 10, length = 10 )
@@ -24,7 +23,7 @@ def main ( screen ):
         myin = screen.getch()
         if myin == curses.ERR:
             tField.update()
-            tField.refresh()
+            screen.refresh()
         else:
             break
 
