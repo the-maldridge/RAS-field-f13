@@ -1,22 +1,24 @@
 import curses
+import subWin
 
-class TextLabel:
+class TextLabel ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x, text ):
-        self.__dict__['win'] = parent.derwin ( 1, len ( text ) + 1, y, x )
+        subWin.SubWindow.__init__ ( self, parent, y, x, 1, len ( text ) + 1 )
         self.text = text
-
-        self.draw()
     
-    def draw ( self ):
+    def update ( self ):
         self.win.addstr ( 0, 0, self.text )
-        self.win.refresh()
+        
+        subWin.SubWindow.update ( self )
 
     def __getattr__ ( self, attr ):
         return getattr ( self.win, attr )
 
 def main ( screen ):
-    tLabel = TextLabel ( screen, 5, 10, 5, "Label" )
+    tLabel = TextLabel ( screen, 5, 10, "Label" )
     screen.vline ( 0, 78, '|', 80 )
+    tLabel.update()
+    screen.refresh()
     while ( True ):
         myin = screen.getch()
         break
