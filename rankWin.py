@@ -12,9 +12,6 @@ class rankWindow ( fullWin.FullWindow ):
 
         fullWin.FullWindow.update ( self )
 
-    def __getattr__ ( self, attr ):
-        return getattr ( self.win, attr )
-
 def main ( screen ):
     r = rankWindow( "Team A\n" +
                     "Team B\n" +
