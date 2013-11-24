@@ -10,7 +10,8 @@ class SubWindow:
         pass
 
     def update ( self ):
-        self.win.refresh()
+        self.win.touchwin()
+        self.win.syncup()
 
     def __getattr__ ( self, attr ):
         return getattr ( self.win, attr )
