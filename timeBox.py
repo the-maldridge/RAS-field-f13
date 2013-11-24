@@ -5,7 +5,6 @@ import pyfiglet
 
 class TimeBox ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x ):
-        self.__dict__['win'] = parent.derwin ( 10, 78, y, x )
         subWin.SubWindow.__init__( self, parent, y, x, 10, 78 )
 
     def update ( self ):
