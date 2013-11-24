@@ -1,11 +1,12 @@
 import time
 import curses
+import subWin
 import pyfiglet
 
-class TimeBox:
+class TimeBox ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x ):
         self.__dict__['win'] = parent.derwin ( 10, 78, y, x )
-        self.update()
+        subWin.SubWindow.__init__( self, parent, y, x, 10, 78 )
 
     def update ( self ):
         self.win.clear()
@@ -15,8 +16,7 @@ class TimeBox:
         for i, line in enumerate ( t_string.rstrip().split('\n') ):
             self.win.addstr ( 1 + i, 2, line )
 
-    def __getattr__ ( self, attr ):
-        return getattr ( self.win, attr )
+        subWin.SubWindow.update ( self )
 
 def main ( screen ):
     tBox = TimeBox ( screen, 0, 0 )
@@ -26,7 +26,7 @@ def main ( screen ):
         myin = screen.getch()
         if myin == curses.ERR:
             tBox.update()
-            tBox.refresh()
+            screen.refresh()
         else:
             break
 
