@@ -5,14 +5,20 @@ import logging
 import timing
 import matchdb
 
+import mainWin
+import rankWin
+
 class GUIMain():
     def __init__ ( self ):
         curses.wrapper ( self.main )
 
     def main ( self, screen ):
         self.screen = screen
-        self.screen.getch()
         self.screen.timeout ( 10 )
+
+        self.window = []
+        self.window.append ( mainWin.MainWindow() )
+        self.window.append ( rankWin.RankWindow() )
         self.focus = self
 
         while True:
@@ -25,8 +31,10 @@ class GUIMain():
             inputKey = self.screen.getkey()
         except curses.error:
             pass
-        if inputKey[ 0 ] == "F":
-            self.setFocus ( window[ int ( inputKey[ 1: ] ) ] )
+        if inputKey[ 0:5 ] == "KEY_F":
+            switch_win = int ( inputKey[ 6:-1 ] ) - 1
+            if switch_win < len ( self.window ):
+                self.setFocus ( self.window[ switch_win ] )
         elif inputKey == "KEY_HOME":
             exit ( 0 )
         else:
@@ -34,6 +42,7 @@ class GUIMain():
     
     def update ( self ):
         if self.focus != self:
+            self.focus.clear()
             self.focus.update()
         else:
             self.screen.refresh()

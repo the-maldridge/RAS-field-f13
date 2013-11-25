@@ -7,7 +7,7 @@ class FullWindow:
         self.focus = self
         self.elements = {}
 
-    def parseInput ( self ):
+    def parseInput ( self, value ):
         pass
 
     def update ( self ):
