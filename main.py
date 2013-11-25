@@ -19,7 +19,7 @@ class GUIMain():
         self.window = []
         self.window.append ( mainWin.MainWindow() )
         self.window.append ( rankWin.RankWindow() )
-        self.focus = self
+        self.focus = self.window[ 0 ]
 
         while True:
             self.update()
