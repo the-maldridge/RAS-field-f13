@@ -1,4 +1,5 @@
 import curses
+import types
 import subWin
 
 class ToggleButton ( subWin.SubWindow ):
@@ -10,12 +11,6 @@ class ToggleButton ( subWin.SubWindow ):
 
         self.state = False
 
-    def toggle ( self ):
-        if self.state:
-            self.state = False
-        else:
-            self.state = True
-
     def update ( self ):
         self.win.standend()
         self.win.box()
@@ -26,6 +21,19 @@ class ToggleButton ( subWin.SubWindow ):
             self.win.addstr ( 1, 1, self.text1 )
 
         subWin.SubWindow.update ( self )
+
+    def toggle ( self ):
+        if self.state:
+            self.state = False
+        else:
+            self.state = True
+        self.press()
+
+    def press ( self ):
+        pass
+
+    def setPressFunc ( self, f ):
+        self.press = types.MethodType ( f, self )
 
 def main ( screen ):
     tButton = ToggleButton ( screen, 5, 10, 3, "Foo", "Bar" )
