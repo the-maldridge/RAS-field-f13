@@ -12,16 +12,39 @@ class GUIMain():
     def main ( self, screen ):
         self.screen = screen
         self.screen.getch()
+        self.screen.timeout ( 10 )
         self.focus = self
 
+        while True:
+            self.update()
+            self.getInput()
+
     def getInput ( self ):
-        inputKey = self.win.getkey()
-        self.focus.parseInput ( inputKey )
+        inputKey = "ERR"
+        try:
+            inputKey = self.screen.getkey()
+        except curses.error:
+            pass
+        if inputKey[ 0 ] == "F":
+            self.setFocus ( window[ int ( inputKey[ 1: ] ) ] )
+        elif inputKey == "KEY_HOME":
+            exit ( 0 )
+        else:
+            self.focus.parseInput ( inputKey )
     
     def update ( self ):
-        self.focus.update()
+        if self.focus != self:
+            self.focus.update()
+        else:
+            self.screen.refresh()
 
-    def parseInput ( self ):
+    def setFocus ( self, focus ):
+        if self.focus is not self:
+            self.focus.isfocused = False
+        self.focus = focus
+        self.focus.isfocused = True
+
+    def parseInput ( self, value ):
         pass
 
     def __getattr__ ( self, attr ):
