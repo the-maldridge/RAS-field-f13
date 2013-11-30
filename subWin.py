@@ -9,7 +9,7 @@ class SubWindow:
         self.parent = parent
         self.focus = self
 
-    def parseInput ( self ):
+    def parseInput ( self, value ):
         pass
 
     def update ( self ):
