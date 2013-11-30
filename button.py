@@ -1,16 +1,15 @@
 import curses
-class Button:
+import subWin
+class Button ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x, text = "" ):
-        self.__dict__['win'] = parent.derwin ( 3, len ( text ) + 2, y, x )
+        subWin.SubWindow.__init__( self, parent, y, x, 3, len ( text ) + 2 )
         self.text = text
-        self.draw()
 
-    def draw ( self ):
+    def update ( self ):
         self.win.box()
         self.win.addstr ( 1, 1, self.text )
 
-    def __getattr__ ( self, attr ):
-        return getattr ( self.win, attr )
+        subWin.SubWindow.update ( self )
 
 def main ( screen ):
     tButton = Button ( screen, 0, 0, "Button" )
@@ -22,6 +21,7 @@ def main ( screen ):
             pass
         else:
             break
+        tButton.update()
 
 if __name__ == "__main__":
     curses.wrapper ( main )
