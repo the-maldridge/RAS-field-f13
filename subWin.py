@@ -10,7 +10,7 @@ class SubWindow:
         self.focus = self
         self.isfocused = False
 
-    def parseInput ( self ):
+    def parseInput ( self, value ):
         pass
 
     def setFocus ( self, focus ):
