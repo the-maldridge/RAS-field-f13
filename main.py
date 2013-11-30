@@ -5,23 +5,63 @@ import logging
 import timing
 import matchdb
 
+import mainWin
+import rankWin
+
 class GUIMain():
     def __init__ ( self ):
-        self.stdscr = curses.initscr()
-        curses.noecho()
-        curses.cbreak()
-        self.stdscr.keypad ( 1 )
+        curses.wrapper ( self.main )
 
-    def __del__ ( self ):
-        self.stdscr.keypad ( 0 )
-        curses.nocbreak()
-        curses.echo()
-        curses.endwin()
+    def main ( self, screen ):
+        self.screen = screen
+        self.screen.timeout ( 10 )
+
+        self.window = []
+        self.window.append ( mainWin.MainWindow() )
+        self.window.append ( rankWin.RankWindow() )
+        self.focus = self.window[ 0 ]
+
+        while True:
+            self.update()
+            self.getInput()
+
+    def getInput ( self ):
+        inputKey = "ERR"
+        try:
+            inputKey = self.screen.getkey()
+        except curses.error:
+            pass
+        if inputKey[ 0:5 ] == "KEY_F":
+            switch_win = int ( inputKey[ 6:-1 ] ) - 1
+            if switch_win < len ( self.window ):
+                self.setFocus ( self.window[ switch_win ] )
+        elif inputKey == "KEY_HOME":
+            exit ( 0 )
+        else:
+            self.focus.parseInput ( inputKey )
+    
+    def update ( self ):
+        if self.focus != self:
+            self.focus.clear()
+            self.focus.update()
+        else:
+            self.screen.refresh()
+
+    def setFocus ( self, focus ):
+        if self.focus is not self:
+            self.focus.isfocused = False
+        self.focus = focus
+        self.focus.isfocused = True
+
+    def parseInput ( self, value ):
+        pass
+
+    def __getattr__ ( self, attr ):
+        getattr ( self.screen, attr )
+
 
 class RASScoreboard(GUIMain):
     pass
 
 if __name__ == "__main__":
     theapp = GUIMain()
-    theapp.stdscr.getch()
-    del theapp

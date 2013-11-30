@@ -2,13 +2,13 @@ import curses
 import fullWin
 import textArea
 
-class rankWindow ( fullWin.FullWindow ):
+class RankWindow ( fullWin.FullWindow ):
     def __init__ ( self, text = "" ):
         fullWin.FullWindow.__init__( self )
         self.rankArea = textArea.TextArea ( self, 0, 0, 24, 80, text )
 
 def main ( screen ):
-    r = rankWindow( "Team A\n" +
+    r = RankWindow( "Team A\n" +
                     "Team B\n" +
                     "Team C\n" +
                     "Team D\n" +
