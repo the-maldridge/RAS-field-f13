@@ -18,7 +18,7 @@ class TextField:
 
 def main ( screen ):
     tField = TextField ( screen, 5, 10, length = 10 )
-    screen.vline ( 0, 80, '|', 80 )
+    screen.vline ( 0, 78, '|', 80 )
     screen.timeout ( 10 )
     while ( True ):
         myin = screen.getch()
