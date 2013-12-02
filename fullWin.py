@@ -4,8 +4,9 @@ import subWin
 class FullWindow:
     def __init__ ( self ):
         self.__dict__['win'] = curses.newwin ( 0, 0 )
-        self.focus = self
         self.elements = {}
+        self.focus = self
+        self.isfocused = False
 
     def parseInput ( self, value ):
         pass
@@ -14,6 +15,12 @@ class FullWindow:
         for element in self.elements.itervalues():
             element.update()
         self.win.refresh()
+
+    def setFocus ( self, focus ):
+        if self.focus is not self:
+            self.focus.isfocused = False
+        self.focus = focus
+        self.focus.isfocused = True
 
     def __setattr__ ( self, attr, value ):
         if attr in self.__dict__.keys():
