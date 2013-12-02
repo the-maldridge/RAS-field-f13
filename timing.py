@@ -4,6 +4,7 @@ import time
 class MatchTimer:
   def __init__(self):
     logging.debug("Loaded the system time library")
+    self.running = False
 
   def startMatch(self):
     logging.info("Match started at %d", time.time())

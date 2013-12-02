@@ -1,5 +1,7 @@
 import curses
+import types
 import subWin
+
 class Button ( subWin.SubWindow ):
     def __init__ ( self, parent, y, x, text = "" ):
         subWin.SubWindow.__init__( self, parent, y, x, 3, len ( text ) + 2 )
@@ -10,6 +12,12 @@ class Button ( subWin.SubWindow ):
         self.win.addstr ( 1, 1, self.text )
 
         subWin.SubWindow.update ( self )
+
+    def press ( self ):
+        pass
+
+    def setPressFunc ( self, f ):
+        self.press = types.MethodType ( f, self )
 
 def main ( screen ):
     tButton = Button ( screen, 0, 0, "Button" )

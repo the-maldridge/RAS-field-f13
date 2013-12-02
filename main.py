@@ -31,8 +31,8 @@ class GUIMain():
             inputKey = self.screen.getkey()
         except curses.error:
             pass
-        if inputKey[ 0:5 ] == "KEY_F":
-            switch_win = int ( inputKey[ 6:-1 ] ) - 1
+        if inputKey in [ "1", "2", "3" ]:
+            switch_win = int ( inputKey ) - 1
             if switch_win < len ( self.window ):
                 self.setFocus ( self.window[ switch_win ] )
         elif inputKey == "KEY_HOME":
