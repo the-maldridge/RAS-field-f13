@@ -9,7 +9,8 @@ class FullWindow:
         self.isfocused = False
 
     def parseInput ( self, value ):
-        pass
+        if self.focus is not self:
+            self.focus.parseInput(value)
 
     def update ( self ):
         for element in self.elements.itervalues():

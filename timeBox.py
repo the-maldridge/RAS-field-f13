@@ -23,7 +23,10 @@ class TimeBox ( subWin.SubWindow ):
     def update ( self ):
         self.win.clear()
         self.win.box()
-        t = self.matchTimer.currentTime()
+        if self.matchTimer.matchIsRunning():
+            t = self.matchTimer.currentTime()
+        else:
+            t = 0
         t_string = pyfiglet.figlet_format ( str ( t ), font = "big" )
         if t is not None:
             for i, line in enumerate ( t_string.rstrip().split('\n') ):

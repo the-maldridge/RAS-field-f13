@@ -26,3 +26,6 @@ class MatchTimer:
   def matchElapsed(self):
     logging.info("Match has ended with %d on the clock", self.endTime-self.startTime)
     return self.endTime-self.startTime
+
+  def matchIsRunning(self):
+    return self.running
